@@ -5,10 +5,29 @@
  */
 package prueba;
 
+import Objetos.Regimen;
+import java.util.HashSet;
+
 /**
  *
  * @author Diana Reyes Luis
  */
 public class Prueba {
-    
+
+    public static void main(String[] args) {
+        
+        HashSet<Regimen> regimenes = new HashSet<>();
+        regimenes.add(Regimen.IEPS);
+        regimenes.add(Regimen.CEDULAR);
+        regimenes.add(Regimen.INCORPORACION);
+        regimenes.add(Regimen.INTERMEDIO);
+        
+        for (Regimen regimene : regimenes) {
+            System.out.println(regimene);
+        }
+        
+        
+        
+
+    }
 }
