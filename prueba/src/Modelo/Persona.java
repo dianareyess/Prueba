@@ -11,5 +11,10 @@ package Modelo;
  */
 public abstract class Persona {
     
-    
+    private RFC rfc;
+    private HashSet<Direccion> direcciones;
+    private String telefono;
+    private Fecha fechaInscripcion;
+    private Fecha fechaInicioOperaciones;
+    private HashSet<>
 }

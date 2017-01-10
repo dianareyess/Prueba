@@ -25,9 +25,6 @@ public class Prueba {
         for (Regimen regimene : regimenes) {
             System.out.println(regimene);
         }
-        
-        
-        
 
     }
 }

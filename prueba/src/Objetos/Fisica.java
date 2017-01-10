@@ -9,8 +9,6 @@ package Objetos;
  *
  * @author Diana Reyes Luis
  */
-public enum TipoDireccion {
-    FISICA,
-    FISCAL,
-    SUCURSAL
+public class Fisica {
+    
 }

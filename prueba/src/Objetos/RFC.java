@@ -29,7 +29,7 @@ public class RFC {
         if (tipoPersona == TipoPersona.FISICA){
             return rfc.matches("^[A-Z]{4}(\\d{6})((\\D|\\d){3})?$");
         }else{
-            return rfc.matches("^[A-Z]{3}(\\d{6})((\\D|\\d){3})?$");
+            return rfc.matches("^[A-Z]{3}(\\d{6})((\\D| \\d){3})?$");
         }
     }
 
@@ -39,3 +39,7 @@ public class RFC {
         return rfc;
     }
 }
+
+//INSTANCIA: Proceso de colocar el objeto en memoria, dandole un espacio, la sentencia da ese espacio New
+//REFERENCIA: Direccion de ese espacio de memoria
+//final c
