@@ -3,21 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Objetos;
+package excepciones;
 
 /**
  *
  * @author Diana Reyes Luis
  */
-public enum Regimen {
-    
-    INCORPORACION,
-    INTERMEDIO,
-    CEDULAR,
-    HOSPEDAJE,
-    IEPS;
-    
-    public boolean getNumerito() {
+public class RegimenIncompatibleException {
+
+    public RegimenIncompatibleException() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+    
 }

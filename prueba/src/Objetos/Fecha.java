@@ -17,6 +17,19 @@ public class Fecha {
 	private Integer anio;
 	private Integer mes;
 	private Integer dia;
+        
+        public Integer DiferenciaAnios() {
+            Fecha fechaActual = new Fecha();
+            int anios = fechaActual.getAnio() - this.getAnio();
+            if (this.getMes() > fechaActual.getMes()){
+                anios--;
+            } else if ((fechaActual.getMes() == this.getMes())&&(fechaActual.getDia() > this.getDia())) {
+                anios--;
+            }
+            return anios;
+        }
+        
+        
 	
 	public Fecha (Integer dia, Integer mes, Integer ano) {
 		this.dia = dia;
@@ -35,7 +48,7 @@ public class Fecha {
 	
 	public void toString(Fecha f) {
 		
-		System.out.println(f.getDia()+"/"+f.getMes()+"/"+f.getAno());
+		System.out.println(f.getDia()+"/"+f.getMes()+"/"+f.getAnio());
 	}
 	
 	public boolean fechaValida () {
@@ -200,11 +213,11 @@ public class Fecha {
 		return " ";
 	}
 	
-	public Integer getAno() {
+	public Integer getAnio() {
 		return anio;
 	}
-	public void setAno(Integer ano) {
-		this.anio = ano;
+	public void setAnio(Integer anio) {
+		this.anio = anio;
 	}
 	public Integer getMes() {
 		return mes;

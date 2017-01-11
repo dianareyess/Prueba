@@ -5,6 +5,7 @@
  */
 package prueba;
 
+import Objetos.HashConjunto;
 import Objetos.Regimen;
 import java.util.HashSet;
 
@@ -16,6 +17,13 @@ public class Prueba {
 
     public static void main(String[] args) {
         
+        HashConjunto regimenes = new HashConjunto();
+        regimenes.add(Regimen.IEPS);
+        regimenes.add(Regimen.CEDULAR);
+        regimenes.add(Regimen.INCORPORACION);
+        regimenes.add(Regimen.INTERMEDIO);
+        
+        
         HashSet<Regimen> regimenes = new HashSet<>();
         regimenes.add(Regimen.IEPS);
         regimenes.add(Regimen.CEDULAR);
@@ -23,8 +31,13 @@ public class Prueba {
         regimenes.add(Regimen.INTERMEDIO);
         
         for (Regimen regimene : regimenes) {
-            System.out.println(regimene);
+            System.out.println(regimene.getNumerito());
+            System.out.println();
         }
+        
+        Fecha fecha = new Fecha();
+        System.out.println();
+        System.out.println();
 
     }
 }
