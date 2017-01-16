@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package objetos;
+package objects;
 
 /**
  *
- * @author princessdiana
+ * @author diana
  */
-public class TipoPersona {
+public class Sentido {
+
+    static Sentido CLOCKWISE;
+    static Sentido COUNTERCLOCKWISE;
     
 }

@@ -5,13 +5,21 @@
  */
 package Modelo.obligaciones;
 
+import objetos.Periodo;
+
 /**
  *
  * @author princessdiana
  */
-public interface Obligacion {
+
+public abstract class Impuestos implements Obligacion {
     
-    public Float calculoImpuestos();  
-    public Float calcularRecargos();
-    public Float toptalPagar();
+    private Periodo periodo;
+    private Regimen regimen;
+    
+    @Override
+    public Float calculoImpuestos() {
+        return totalPagar() + calcularRecargos();
+    }
+    
 }

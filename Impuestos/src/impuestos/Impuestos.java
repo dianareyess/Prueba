@@ -3,87 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Impuestos;
+package impuestos;
 
-import Excepciones.RFCException;
-import Objetos.Fecha;
-import Objetos.RFC;
-import Objetos.TipoPersona;
-import java.util.ArrayList;
-import java.util.HashSet;
+import Modelo.obligaciones.Obligacion;
+import Modelo.obligaciones.Cedular;
 
 /**
  *
- * @author Diana Reyes Luis
+ * @author princessdiana
  */
 public class Impuestos {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws RFCException {
+    public static void main(String[] args) {
+        // TODO code application logic here
         
-        RFC rfc = new RFC("RFF810904815", TipoPersona.MORAL);
-        System.out.println(rfc);
+        /*Obligacion ob = new Cedular();
         
-        /**String cadena = "";
-        boolean b = cadena.matches();
-        System.out.println(b);
+        arreglo.add(ob);
+        arreglo.add(new Ieps());
+        arreglo.add(new Incorporacion());
+        arreglo.add(new Cedular());
         
-         /*Fecha.agregarDiaInhabil(new Fecha (1,1,2016));
-         Fecha.agregarDiaInhabil(new Fecha (6,1,2016));
-         Fecha.agregarDiaInhabil(new Fecha (21,11,2016));
-         
-         Fecha fecha1 = new Fecha(4,1, 2017);
-         fecha1.incrementarDiaHabil(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
-         
-         System.out.println(fecha1);
-   
-        /*
-        Fecha fecha1 = new Fecha (1,1,2016);
-        Fecha fecha2 = new Fecha (4,5,2016);
-        System.out.println(fecha1);
-        System.out.println(fecha2);
+        for (int i = 0; i < arreglo.size(); i++) {
+            
+            
+            arreglo.get(i).metodoPrueba();
+        }*/
         
-
+        TipoPeriodo p = Tipoperioso.getPeriodo(Periodicidad.MENSUAL, new Fecha(7,8,2017));
         
-        //System.out.println(Fecha.estatica);
+        System.out.println(p);
         
-        Fecha diana = new Fecha(28,04,1997);
-        Fecha omar = new Fecha(22,04,1997);
         
-        System.out.println(diana.compareTo(omar));
-        System.out.println(omar.compareTo(diana));
-
-        System.out.println(diana);
-        System.out.println(omar);
-        
-        System.out.println(diana.estatica);
-        diana.estatica = 7;
-        System.out.println(omar.estatica);
-
-        //System.out.println(f.fechaValidar()); 
-        
-        ArrayList<Fecha> fechasInhabiles = new ArrayList<Fecha>();
-        
-        fechasInhabiles.add(new Fecha (1,1,2017));
-        fechasInhabiles.add(new Fecha (5,2,2017));
-        
-        for (Fecha fechasInabile : fechasInhabiles) {
-            System.out.println(fechasInhabiles);
-        }
-        
-        HashSet<Fecha> fechas = new HashSet<>();
-        
-        fechasInhabiles.add(new Fecha (1,1,2017));
-        fechasInhabiles.add(new Fecha (5,2,2017));
-        
-        boolean t = fechas.contains(omar)
-        
-        for (Fecha fecha : fechas) {
-            System.out.println(fecha);
-        }
-    */
+       
     }
+
+    
+    
     
 }

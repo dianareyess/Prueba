@@ -9,6 +9,16 @@ package Modelo.obligaciones;
  *
  * @author princessdiana
  */
-public class Cedular {
+public class Cedular extends Impuestos {
     
+    @Override
+    public Float calcularRecargos () {
+        return null;
+        
+    }
+
+    @Override
+    public Float toptalPagar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

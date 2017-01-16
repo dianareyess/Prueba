@@ -5,6 +5,8 @@
  */
 package objetos;
 
+import java.time.DayOfWeek;
+
 /**
  *
  * @author princessdiana
@@ -12,12 +14,19 @@ package objetos;
 public class Periodo {
     
     private TipoPeriodo tipoPeriodo;
-    private Periodicidad periodicidad;
     private Fecha fechaLimitePago;
+    private ejercicio;
 
-    public Periodo(TipoPeriodo tp, Periodicidad p) {
+    public Periodo(TipoPeriodo tp) {
         tipoPeriodo = tp;
-        periodicidad = p;
+        this.ejercicio = ejercicio;
+
+    }
+    
+    public Fecha fechaCero() {
+        tipoPeriodo.getMesFinal();
+        Fecha f = new Fecha (17,tipoPeriodo.getMesFinal() + 1, 2017);
+        f.incrementarDiaHabil(DayOfWeek.SATURDAY, DayOfWeek)
 
     }
     
