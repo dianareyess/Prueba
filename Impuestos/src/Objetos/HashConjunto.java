@@ -5,10 +5,25 @@
  */
 package objetos;
 
+import java.util.HashSet;
+
 /**
  *
  * @author princessdiana
  */
-public class HashConjunto {
+public class HashConjunto extends HashSet<Regimen> {
+
+    @Override
+    public boolean add(Regimen rgm) {
+        if ((rgm == Regimen.INCORPORACION)&&super.contains(Regimen.INTERMEDIO)){
+            return false;
+        }else if ((rgm == Regimen.INTERMEDIO)&&super.contains(Regimen.INCORPORACION)){
+            return false;
+        }else{
+            return super.add(rgm);
+        }
+    }
+    
+    
     
 }

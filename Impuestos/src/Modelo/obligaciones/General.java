@@ -12,6 +12,7 @@ import objetos.TipoPeriodo;
  * @author princessdiana
  */
 public abstract class General {
+    
     private Float ingresos;
     private Float egresos;
     private TipoPeriodo periodo;

@@ -34,31 +34,44 @@ public enum TipoPeriodo {
     OCT_NOV_DIC(Periodicidad.TRIMESTRAL, 10, 12);
     
 
-    private Periodicidad periodicidad;
+        private Periodicidad periodicidad;
     private Integer mesInicial;
-    private Integer mesFinal;
+    private Integer mesFinal;    
     
     private TipoPeriodo(Periodicidad periodicidad,
-        Integer mesIni,
-        Integer mesFin ) {
+            Integer mesIni,
+            Integer mesFin ){
         this.periodicidad = periodicidad;
         this.mesInicial = mesIni;
         this.mesFinal = mesFin;
-        
-    }
-    
-    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f) {
-        
-       TipoPeriodo resultado = null;
-       TipoPeriodo tp [] = TipoPeriodo.values();
-       for (TipoPeriodo tipoPeriodo : tp) {
-           if (tipoPeriodo.getPeriodicidad) {
-               
-           }
-       }
     }
 
-    void getMesFinal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Periodicidad getPeriodicidad() {
+        return periodicidad;
     }
+
+    public Integer getMesInicial() {
+        return mesInicial;
+    }
+
+    public Integer getMesFinal() {
+        return mesFinal;
+    }
+    
+    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
+        TipoPeriodo resultado = null;
+        TipoPeriodo tp[] = TipoPeriodo.values();
+        for (TipoPeriodo tipoPeriodo : tp) {
+            if (tipoPeriodo.getPeriodicidad() == p ){
+                if ((tipoPeriodo.getMesInicial() <= f.getMes())&&
+                        (tipoPeriodo.getMesFinal() >= f.getMes())){
+                    return tipoPeriodo;
+                }
+            }
+        }
+        return resultado;
+    }
+    
+    
+    
 }

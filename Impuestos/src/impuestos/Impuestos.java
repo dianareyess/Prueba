@@ -5,7 +5,7 @@
  */
 package impuestos;
 
-import Modelo.obligaciones.Obligacion;
+import Excepciones.DireccionExcepcion;
 import Modelo.obligaciones.Cedular;
 
 /**
@@ -17,7 +17,7 @@ public class Impuestos {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DireccionExcepcion  {
         // TODO code application logic here
         
         /*Obligacion ob = new Cedular();
@@ -33,9 +33,11 @@ public class Impuestos {
             arreglo.get(i).metodoPrueba();
         }*/
         
-        TipoPeriodo p = Tipoperioso.getPeriodo(Periodicidad.MENSUAL, new Fecha(7,8,2017));
+        Cedular cedular = new Cedular();
         
-        System.out.println(p);
+        Float f = cedular.calculoImpuesto();
+        
+        System.out.println(f);
         
         
        

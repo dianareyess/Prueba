@@ -9,6 +9,10 @@ package objetos;
  *
  * @author princessdiana
  */
-public class TipoDireccion {
+public enum TipoDireccion {
+    
+    FISICA,
+    FISCAL,
+    SUCURSAL
     
 }

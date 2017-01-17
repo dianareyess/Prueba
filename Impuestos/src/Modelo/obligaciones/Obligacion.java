@@ -11,7 +11,7 @@ package Modelo.obligaciones;
  */
 public interface Obligacion {
     
-    public Float calculoImpuestos();  
-    public Float calcularRecargos();
-    public Float toptalPagar();
+    public Float calculoImpuesto();
+    public Float calculaRecargos();
+    public Float totalPagar();
 }

@@ -7,6 +7,8 @@ package Modelo.obligaciones;
 
 import objetos.Periodo;
 
+
+
 /**
  *
  * @author princessdiana
@@ -14,12 +16,13 @@ import objetos.Periodo;
 
 public abstract class Impuestos implements Obligacion {
     
-    private Periodo periodo;
     private Regimen regimen;
+    private Periodo periodo;
     
     @Override
-    public Float calculoImpuestos() {
-        return totalPagar() + calcularRecargos();
+    public Float calculoImpuesto(){
+        return totalPagar() + calculaRecargos();
     }
+
     
 }

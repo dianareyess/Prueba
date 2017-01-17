@@ -9,6 +9,9 @@ package objetos;
  *
  * @author princessdiana
  */
-public class TipoPersona {
+public enum TipoPersona {
+    
+    FISICA,
+    MORAL
     
 }

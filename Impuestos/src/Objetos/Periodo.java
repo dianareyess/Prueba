@@ -14,25 +14,31 @@ import java.time.DayOfWeek;
 public class Periodo {
     
     private TipoPeriodo tipoPeriodo;
+    private Integer ejercicio;
     private Fecha fechaLimitePago;
-    private ejercicio;
-
-    public Periodo(TipoPeriodo tp) {
+    
+    public Periodo(TipoPeriodo tp, Integer ejercicio){
         tipoPeriodo = tp;
         this.ejercicio = ejercicio;
-
     }
     
-    public Fecha fechaCero() {
+    private Fecha fechaCero(){
         tipoPeriodo.getMesFinal();
-        Fecha f = new Fecha (17,tipoPeriodo.getMesFinal() + 1, 2017);
-        f.incrementarDiaHabil(DayOfWeek.SATURDAY, DayOfWeek)
-
+        Fecha f = new Fecha(17,tipoPeriodo.getMesFinal() + 1, ejercicio);
+        f.incrementarDiaHabil(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
+        return f;
     }
     
-    private void setFechaLimite() {
-        //Calcular fecha limite y asignar a la fecha limite de pago
+    public Fecha fechaLimite(Integer diasAdicionales){
+        Fecha cero = fechaCero();
+        for (int i = 0; i < diasAdicionales; i++) {
+            cero.incrementarDiaHabil(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
+        }
+        return cero;
     }
     
+    private void setFechaLimite(){
+        
+    }
     
 }
