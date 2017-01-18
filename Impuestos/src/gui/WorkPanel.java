@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.obligaciones;
-
-import objetos.Periodo;
-import objetos.Regimen;
-
+package gui;
 
 /**
  *
  * @author princessdiana
  */
-public class Intermedio extends General {
-    public Intermedio(Periodo per) {
-        super(Regimen.INTERMEDIO, per);
+public class WorkPanel {
+    
+    public WorkPanel () {
+        
     }
 }

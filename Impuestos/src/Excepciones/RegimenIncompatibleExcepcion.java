@@ -11,19 +11,10 @@ package Excepciones;
  */
 public class RegimenIncompatibleExcepcion extends Exception {
 
-    /**
-     * Creates a new instance of <code>RegimenIncompatibleException</code>
-     * without detail message.
-     */
+  
     public RegimenIncompatibleExcepcion() {
     }
 
-    /**
-     * Constructs an instance of <code>RegimenIncompatibleException</code> with
-     * the specified detail message.
-     *
-     * @param msg the detail message.
-     */
     public RegimenIncompatibleExcepcion(String msg) {
         super(msg);
     }

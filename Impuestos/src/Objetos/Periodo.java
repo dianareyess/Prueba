@@ -37,8 +37,46 @@ public class Periodo {
         return cero;
     }
     
-    private void setFechaLimite(){
-        
+    @Override
+    public String toString(){
+        return tipoPeriodo.toString()+" "+ejercicio;
     }
+    
+    public Periodo next(){
+        Integer ej = ejercicio;
+        TipoPeriodo tp = tipoPeriodo.next();
+        if (tp == null){
+            ej++;
+            tp = TipoPeriodo.getPeriodo(this.tipoPeriodo.getPeriodicidad(), new Fecha(1,1,ej));
+        }
+        Periodo resultado = new Periodo(tp, ej);
+
+        
+        return resultado;
+    }
+
+    public TipoPeriodo getTipoPeriodo() {
+        return tipoPeriodo;
+    }
+
+    public void setTipoPeriodo(TipoPeriodo tipoPeriodo) {
+        this.tipoPeriodo = tipoPeriodo;
+    }
+
+    public Integer getEjercicio() {
+        return ejercicio;
+    }
+
+    public void setEjercicio(Integer ejercicio) {
+        this.ejercicio = ejercicio;
+    }
+
+    public Fecha getFechaLimitePago() {
+        return fechaLimitePago;
+    }
+
+    public void setFechaLimitePago(Fecha fechaLimitePago) {
+        this.fechaLimitePago = fechaLimitePago;
+    }      
     
 }

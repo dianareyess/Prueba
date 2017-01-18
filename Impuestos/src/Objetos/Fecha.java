@@ -118,8 +118,8 @@ public class Fecha implements Comparable<Fecha> {
         do {
             bandera = false;
             incrementar();
-            for (int i = 0; i < days.length; i++) {
-                if (days[i] == this.diaSemana()){
+            for (DayOfWeek day : days) {
+                if (day == this.diaSemana()) {
                     bandera = true;
                 }
             }

@@ -34,7 +34,7 @@ public enum TipoPeriodo {
     OCT_NOV_DIC(Periodicidad.TRIMESTRAL, 10, 12);
     
 
-        private Periodicidad periodicidad;
+    private Periodicidad periodicidad;
     private Integer mesInicial;
     private Integer mesFinal;    
     
@@ -70,6 +70,10 @@ public enum TipoPeriodo {
             }
         }
         return resultado;
+    }
+
+    TipoPeriodo next() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

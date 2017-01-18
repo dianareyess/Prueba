@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.obligaciones;
+package gui;
 
-import objetos.Periodo;
-import objetos.Regimen;
-
+import javax.swing.JPanel;
 
 /**
  *
  * @author princessdiana
  */
-public class Intermedio extends General {
-    public Intermedio(Periodo per) {
-        super(Regimen.INTERMEDIO, per);
+public class BusquedaPanel extends JPanel {
+    
+    public BusquedaPanel () {
+        
     }
 }
