@@ -15,6 +15,7 @@ import Modelo.Fisica;
 import Modelo.Moral;
 import Modelo.obligaciones.Cedular;
 import Modelo.obligaciones.Incorporacion;
+import gui.PrincipalFrame;
 import objetos.Fecha;
 import objetos.RFC;
 import objetos.Regimen;
@@ -30,7 +31,12 @@ public class Impuestos {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws DireccionExcepcion  {
+    public static void main(String[] args) throws DireccionExcepcion, RegimenIncompatibleExcepcion {
+        
+        PrincipalFrame main = new PrincipalFrame();
+        
+        
+        
         
         Fisica fisica = null;
         Moral moral = null;
@@ -65,12 +71,18 @@ public class Impuestos {
         
         juan.addDireccion(new Direccion(TipoDireccion.FISCAL, "Cui", "12", null, "Del Valle", "68150", "Xoxo"));
         
-        fisica.addRegimen(Regimen.INCORPORACION);
-        fisica.addRegimen(Regimen.IEPS);
-        moral.addRegimen(Regimen.IEPS);
-        juan.addRegimen(Regimen.INCORPORACION);
-        
-        //fisica.addRegimen(Regimen.INTERMEDIO);
+        try {
+            fisica.addRegimen(Regimen.INCORPORACION);
+            fisica.addRegimen(Regimen.IEPS);
+            
+            moral.addRegimen(Regimen.IEPS);
+            
+            juan.addRegimen(Regimen.INCORPORACION);
+            
+            //fisica.addRegimen(Regimen.INTERMEDIO);
+        } catch (RegimenIncompatibleExcepcion ex) {
+            ex.printStackTrace();
+        }
         
         juan.actualizarObligaciones();
         
@@ -100,11 +112,9 @@ public class Impuestos {
 //        
 //        
 
+
+
         
     }
 
-
-    
-    
-    
 }

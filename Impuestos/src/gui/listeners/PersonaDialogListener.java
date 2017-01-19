@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.listeners;
 
-import java.awt.Color;
-import javax.swing.JPanel;
+import Modelo.Persona;
 
 /**
  *
  * @author princessdiana
  */
-public class WorkPanel extends JPanel{
+public interface PersonaDialogListener {
     
-    public WorkPanel(){
-        setBackground(Color.BLUE);
-    }
+    public void aceptarButtonClick(Persona persona);
+    
 }
