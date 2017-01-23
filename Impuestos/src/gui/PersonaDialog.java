@@ -7,7 +7,9 @@ package gui;
 
 import Excepciones.IntervalosFechaExcepcion;
 import Excepciones.PersonaFisicaExcepcion;
+import Excepciones.RFCExcepcion;
 import Modelo.Persona;
+import gui.componenetes.TEdit;
 import gui.listeners.PersonaDialogListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -37,6 +39,11 @@ public abstract class PersonaDialog extends JDialog {
     private JLabel txtTitulo;
 
     private PersonaDialogListener listener;
+    
+    private JPanel pnlElementos;
+    
+    protected TEdit edtRFC;
+    protected TEdit edtTelefono;
 
     public PersonaDialog(JFrame frame) {
         super(frame, true);
@@ -53,22 +60,45 @@ public abstract class PersonaDialog extends JDialog {
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Persona persona = null;
                 try {
-                    persona = crearObjeto();
+                    Persona persona = crearObjeto();
+                    listener.aceptarButtonClick(persona);
+                    setVisible(false);
                 } catch (IntervalosFechaExcepcion ex) {
-                    Logger.getLogger(PersonaDialog.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(frame,
+                            "La fecha de inscripcion debe ser menor al inicio de operaciones",
+                            "Error en las Fechas",
+                            JOptionPane.ERROR_MESSAGE);
                 } catch (PersonaFisicaExcepcion ex) {
-                    Logger.getLogger(PersonaDialog.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(frame,
+                            "La persona debe ser mayor de edad para inscribirse",
+                            "Estas chavo, chavo !",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (RFCExcepcion ex) {
+                    JOptionPane.showMessageDialog(frame,
+                            "RFC mal escrito",
+                            "Pichon !",
+                            JOptionPane.WARNING_MESSAGE);                    
                 }
-                listener.aceptarButtonClick(persona);
-                setVisible(false);
 
             }
         });
 
         btnCancelar = new JButton("Cancelar");
-        //btnCancelar.addActionListener(l);
+        btnCancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int n = JOptionPane.showConfirmDialog(
+                        frame,
+                        "De'veritas quieres cerrar?",
+                        "Cancelar cambios",
+                        JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.YES_OPTION){
+                    PersonaDialog.this.setVisible(false);
+                }
+
+            }
+        });
 
         pnlActions = new JPanel();
         pnlActions.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -76,8 +106,26 @@ public abstract class PersonaDialog extends JDialog {
         pnlActions.add(btnAceptar);
         pnlActions.add(btnCancelar);
 
+        
+        pnlElementos = new JPanel();
+        pnlElementos.setBackground(Color.PINK);
+        pnlElementos.setLayout(null);
+                
+        edtRFC = new TEdit("R.F.C.:", 6);
+        edtRFC.setBounds(50, 50);
+        
+        edtTelefono = new TEdit("Telefono:", 10);
+        edtTelefono.setBounds(50, 150);
+   
+        
+        
+        pnlElementos.add(edtRFC);
+        pnlElementos.add(edtTelefono);
+        
+        
         super.add(pnlActions, BorderLayout.SOUTH);
         super.add(pnlEncabezado, BorderLayout.NORTH);
+        super.add(pnlElementos, BorderLayout.CENTER);
 
     }
 
@@ -85,6 +133,17 @@ public abstract class PersonaDialog extends JDialog {
         this.listener = listener;
     }
 
-    protected abstract Persona crearObjeto() throws IntervalosFechaExcepcion, PersonaFisicaExcepcion;
+    protected abstract Persona crearObjeto() throws IntervalosFechaExcepcion, PersonaFisicaExcepcion, RFCExcepcion;
 
+    protected JPanel getPnlElementos() {
+        return pnlElementos;
+    }
+
+    protected void setPnlElementos(JPanel pnlElementos) {
+        this.pnlElementos = pnlElementos;
+    }
+
+    
+    
+    
 }

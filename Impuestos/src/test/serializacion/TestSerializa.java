@@ -21,136 +21,177 @@ import java.util.Scanner;
  */
 public class TestSerializa {
     
-    public static void main() { 
+    
+    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         
-        ArrayList<Alumno> alumno = new ArrayList <>();
+        ArrayList<Alumno> alumnos = new ArrayList<>();
         Integer opcion = 0;
         Scanner teclado = new Scanner(System.in);
-        File file = new File("Calificaciones.dat");
-        
         
         int registro = 0;
-        do {
-            
-            System.out.println("1.Agregar");
-            System.out.println("2.Modificar");
-            System.out.println("3.Eliminar");
-            System.out.println("4.Listar");
-            System.out.println("5.Guardar");
-            System.out.println("6.Cargar");
-            System.out.println("7.Salir");
-            System.out.println("8.¿Que desea hacer?");
-
+        do{
+            System.out.println("1. Agregar");
+            System.out.println("2. Modificar");
+            System.out.println("3. Eliminar");
+            System.out.println("4. Listar");
+            System.out.println("5. Guardar");
+            System.out.println("6. Cargar");
+            System.out.println("7. Salir");
+            System.out.println("¿Que quieres hacer?");
             opcion = teclado.nextInt();
-            switch (opcion){
+            switch (opcion) {
                 case 1:
-                    System.out.print("Nombre:");
-                    String nombre  = teclado.nextLine();
+                    System.out.println("Nombre:");
+                    String nombre = teclado.next();
                     System.out.print("Edad:");
-                    Integer edad  = teclado.nextInt();
+                    Integer edad = teclado.nextInt();
                     System.out.print("Calificacion:");
-                    Float calificacion  = teclado.nextFloat();
-                    Alumno alumnito = new Alumno(nombre,edad,calificacion);
-                    alumno.add(alumnito);
+                    Float cal = teclado.nextFloat();
+                    Alumno alumnito = new Alumno(nombre, edad, cal);
+                    alumnos.add(alumnito);
                     break;
                 case 2:
-                    System.out.println("Que registro?");
-                    Alumno alumnoModificar = alumno.get(registro);
-                    System.out.print("Nombre:");
+                    System.out.println("¿que registro?");
+                    registro = teclado.nextInt();
+                    Alumno alumnoModificar = alumnos.get(registro);
+                    System.out.println("Nombre:");
                     alumnoModificar.setNombre(teclado.next());
                     System.out.print("Edad:");
                     alumnoModificar.setEdad(teclado.nextInt());
                     System.out.print("Calificacion:");
                     alumnoModificar.setCalificacion(teclado.nextFloat());
-                    break;      
+                    break;
                 case 3:
-                    System.out.println("Que registro?");
+                    System.out.println("¿que registro?");
                     registro = teclado.nextInt();
-                    alumno.remove(registro);
-                    break; 
+                    alumnos.remove(registro);
+                    break;
                 case 4:
                     int i = 0;
-                    for (Alumno alumnos : alumno) {
-                        System.out.println();
-                        
+                    for (Alumno alumno : alumnos) {
+                        System.out.println((i++)+".- "+alumno);
                     }
                     break;
-                
+                case 5:
+                    escribirCalificaciones(alumnos);
+                    break;
+                case 6:
+                    alumnos = cargarCalificaciones();
+                    break;
+                case 7:
+                    break;
+                default:
+                    throw new AssertionError();
             }
-
-            
         }while(opcion != 7);
-            
-                               
-     }
-    
-    
-    public static void leerArrayList() throws FileNotFoundException, IOException, ClassNotFoundException { 
         
-        File file = new File("alumnitos colection.dat");
+        
+    }
+    
+    
+    public static void escribirCalificaciones(ArrayList<Alumno> arreglo) throws FileNotFoundException, IOException{
+        File file = new File("calificaciones.dat");
+        FileOutputStream output = new FileOutputStream(file);
+        ObjectOutputStream writer = new ObjectOutputStream(output);
+        
+        writer.writeObject(arreglo);
+        
+        writer.close();
+        output.close();
+                       
+    }
+    
+    public static ArrayList<Alumno> cargarCalificaciones() throws FileNotFoundException, IOException, ClassNotFoundException{
+        
+        File file = new File("calificaciones.dat");
+        FileInputStream input = new FileInputStream(file);
+        ObjectInputStream reader = new ObjectInputStream(input);
+        
+        ArrayList<Alumno> retorno = (ArrayList<Alumno>)reader.readObject();
+     
+        return retorno;
+    }
+    
+    
+    public static void leerColleccion() throws FileNotFoundException, IOException, ClassNotFoundException {
+        
+        File file = new File("alumnitosColeccion.dat");
         FileInputStream input = new FileInputStream(file);
         ObjectInputStream reader = new ObjectInputStream(input);
         
         ArrayList<Alumno> loquesea = (ArrayList<Alumno>)reader.readObject();
-        
-        for(Alumno alumno : loquesea) {
+              
+        for (Alumno alumno : loquesea) {
             System.out.println(alumno);
         }
         
         input.close();
         reader.close();
-                    
-     }
+    }
     
-    public static void escribirArrayList() throws FileNotFoundException, IOException, ClassNotFoundException { 
+    
+    
+    public static void escribirColeccion() throws FileNotFoundException, IOException {
         
         ArrayList<Alumno> alumnitos = new ArrayList<>();
-        Alumno diana = new Alumno("Diana", 19, (float)6);
-        Alumno hannia = new Alumno("Hannia", 19, (float)7);
-        Alumno carlos = new Alumno("Carlos", 20, (float)8);
+        Alumno fernando = new Alumno("Fernando", 20, (float)5.95);
+        Alumno cesar = new Alumno("Cesar", 20, (float)5.96);
+        Alumno omar = new Alumno("Omar", 21, (float)9.5);
+        Alumno diana = new Alumno("Diana", 19, (float)9.5);
+        Alumno juan = new Alumno("Juan", 22, (float)9.5);
         
+        alumnitos.add(fernando);
+        alumnitos.add(cesar);
+        alumnitos.add(omar);
+        alumnitos.add(juan);
         alumnitos.add(diana);
-        alumnitos.add(hannia);
-        alumnitos.add(carlos);
-       
         
-        File file = new File("alumnitos colection.dat");
+        File file = new File("alumnitosColeccion.dat");
         FileOutputStream output = new FileOutputStream(file);
         ObjectOutputStream writer = new ObjectOutputStream(output);
-                
-        output.close();
+               
+        writer.writeObject(alumnitos);
+        
         writer.close();
-                    
-     }
+        output.close();
+        
+        
+        
+        
+    }
     
     
     
     
-    public static void leerObjetos() throws FileNotFoundException, IOException, ClassNotFoundException{
-         File file = new File("pichones.dat");
-         FileInputStream input = new FileInputStream(file);
-         ObjectInputStream reader = new ObjectInputStream(input);
-         
-         
-         while (input.available() > 0){
-             Alumno obj = (Alumno)reader.readObject();
-         System.out.println(obj);
-         }           
-     }
-    
-     public static void escribirObjetos() throws FileNotFoundException, IOException{
-         Alumno diana = new Alumno("Diana", 19, (float)6);
-         Alumno hannia = new Alumno("Hannia", 19, (float)7);
-         Alumno carlos = new Alumno("Carlos", 20, (float)8);
-         
-         File file = new File("pichones.dat");
-         FileOutputStream output = new FileOutputStream(file);
-         ObjectOutputStream writer = new ObjectOutputStream(output);
-         
-         writer.writeObject(diana);
-         
-         writer.close();
-         output.close();
+    public static void leerObjetos() throws FileNotFoundException, IOException, ClassNotFoundException {
+        
+        File file = new File("pichones.dat");
+        FileInputStream input = new FileInputStream(file);
+        ObjectInputStream reader = new ObjectInputStream(input);
+        
+        while (input.available() > 0){
+            Alumno obj = (Alumno)reader.readObject();
+            System.out.println(obj);            
+        }
 
-     }
+    }
+    
+    public static void escribirObjetos() throws FileNotFoundException, IOException {
+        Alumno fernando = new Alumno("Fernando", 20, (float)5.95);
+        Alumno cesar = new Alumno("Cesar", 20, (float)5.96);
+        Alumno omar = new Alumno("Omar", 21, (float)9.5);
+        
+        File file = new File("pichones.dat");
+        FileOutputStream output = new FileOutputStream(file);
+        ObjectOutputStream writer = new ObjectOutputStream(output);
+        
+        writer.writeObject(fernando);
+        writer.writeObject(cesar);
+        writer.writeObject(omar);
+        
+        writer.close();
+        output.close();
+        
+    }
+    
 }

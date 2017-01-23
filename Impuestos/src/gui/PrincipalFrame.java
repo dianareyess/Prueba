@@ -5,6 +5,9 @@
  */
 package gui;
 
+import Modelo.Persona;
+import controller.BaseDatos;
+import gui.listeners.PersonaDialogListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -33,6 +36,8 @@ public class PrincipalFrame extends JFrame {
     private JButton btnPrueba;
     private JButton btnPruebaMoral;
     
+    private BaseDatos datos;
+    
     public PrincipalFrame(){
         super("Impuestos Lasallinos");
         super.setSize(1100, 600);
@@ -40,6 +45,8 @@ public class PrincipalFrame extends JFrame {
         super.setLayout(new BorderLayout());
        
         super.setJMenuBar(createMenu());
+        
+        datos = new BaseDatos();
         
         pnlBusqueda = new BusquedaPanel();
         pnlWork = new WorkPanel();
@@ -66,6 +73,13 @@ public class PrincipalFrame extends JFrame {
         
         
         dlgFisica = new FisicaDialog(this);
+        dlgFisica.setListener(new PersonaDialogListener() {
+            @Override
+            public void aceptarButtonClick(Persona persona) {
+                System.out.println(persona.getRfc());
+                datos.agregar(persona);
+            }
+        });
 
         
         dlgMoral = new MoralDialog(this);
@@ -91,6 +105,13 @@ public class PrincipalFrame extends JFrame {
         
         JMenu mArchivo = new JMenu("Archivo");
         JMenuItem mmGuardar = new JMenuItem("Guardar");
+        mmGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Esta guardando");
+                datos.guardar();
+            }
+        });
         JMenuItem mmBuscar = new JMenuItem("Buscar");
         JMenuItem mmSalir = new JMenuItem("Salir");        
         mArchivo.add(mmGuardar);

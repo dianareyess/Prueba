@@ -31,13 +31,10 @@ public class Impuestos {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws DireccionExcepcion, RegimenIncompatibleExcepcion {
+    public static void main(String[] args) throws DireccionExcepcion {
         
         PrincipalFrame main = new PrincipalFrame();
-        
-        
-        
-        
+
         Fisica fisica = null;
         Moral moral = null;
         Fisica juan = null;
@@ -118,3 +115,4 @@ public class Impuestos {
     }
 
 }
+

@@ -20,7 +20,7 @@ public class Hospedaje extends Impuestos {
     @Override
     public Float totalPagar() {
         Float impuesto = getIngresos() * (float)0.02;
-        return super.totalPagar() + impuestos;
+        return super.totalPagar() + impuesto;
     }
 
     @Override

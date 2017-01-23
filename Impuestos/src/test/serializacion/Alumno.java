@@ -5,11 +5,14 @@
  */
 package test.serializacion;
 
+import java.io.Serializable;
+
 /**
  *
  * @author princessdiana
  */
-public class Alumno {
+public class Alumno implements Serializable{
+    
     private String nombre;
     private Integer edad;
     private Float calificacion;
@@ -19,12 +22,12 @@ public class Alumno {
         this.edad = edad;
         this.calificacion = calificacion;
     }
-    
-    public String toString(){
-        return nombre;
-        
-    }
 
+    @Override
+    public String toString(){
+        return nombre+" "+edad+" "+calificacion;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -51,8 +54,4 @@ public class Alumno {
     
     
     
-    
 }
-
-
-
